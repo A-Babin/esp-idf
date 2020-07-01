@@ -28,7 +28,7 @@ ESP-IDF makes these components explicit and configurable. To do that,
 when a project is compiled, the build system will look up all the
 components in the ESP-IDF directories, the project directories and
 (optionally) in additional custom component directories. It then
-allows the user to configure the ESP-IDF project using a a text-based
+allows the user to configure the ESP-IDF project using a text-based
 menu system to customize each component. After the components in the
 project are configured, the build system will compile the project.
 
@@ -99,10 +99,10 @@ Advanced Commands
 - ``idf.py app``, ``idf.py bootloader``, ``idf.py partition_table`` can be used to build only the app, bootloader, or partition table from the project as applicable.
 - There are matching commands ``idf.py app-flash``, etc. to flash only that single part of the project to the target.
 - ``idf.py -p PORT erase_flash`` will use esptool.py to erase the target's entire flash chip.
-- ``idf.py size`` prints some size information about the app. ``size-components`` and ``size-files`` are similar commands which print more detailed per-component or per-source-file information, respectively. If you define variable ``-DOUTPUT_JSON=1`` when running CMake (or ``idf.py``), the output will be formatted as JSON not as human readable text.
+- ``idf.py size`` prints some size information about the app. ``size-components`` and ``size-files`` are similar commands which print more detailed per-component or per-source-file information, respectively. If you define variable ``-DOUTPUT_JSON=1`` when running CMake (or ``idf.py``), the output will be formatted as JSON, not as human readable text.
 - ``idf.py reconfigure`` re-runs CMake_ even if it doesn't seem to need re-running. This isn't necessary during normal usage, but can be useful after adding/removing files from the source tree, or when modifying CMake cache variables. For example, ``idf.py -DNAME='VALUE' reconfigure`` can be used to set variable ``NAME`` in CMake cache to value ``VALUE``.
 
-The order of multiple ``idf.py`` commands on the same invocation is not important, they will automatically be executed in the correct order for everything to take effect (ie building before flashing, erasing before flashing, etc.).
+The order of multiple ``idf.py`` commands on the same invocation is not important. They will automatically be executed in the correct order for everything to take effect (ie building before flashing, erasing before flashing, etc.).
 
 idf.py options
 ^^^^^^^^^^^^^^
@@ -114,6 +114,7 @@ Here is a list of some useful options:
 - ``--ccache`` flag can be used to enable CCache_ when compiling source files, if the CCache_ tool is installed. This can dramatically reduce some build times.
 
 Note that some older versions of CCache may exhibit bugs on some platforms, so if files are not rebuilt as expected then try disabling ccache and build again. CCache can be enabled by default by setting the ``IDF_ENABLE_CCACHE`` environment variable to a non-zero value.
+
 - ``-v`` flag causes both ``idf.py`` and the build system to produce verbose build output. This can be useful for debugging build problems.
 
 Using CMake Directly
@@ -768,7 +769,7 @@ tool called bmp2h. The header file is then included in as C source
 file called graphics_lib.c::
 
     add_custom_command(OUTPUT logo.h
-         COMMAND bmp2h -i ${COMPONENT_DIR}/logo.bmp -o log.h
+         COMMAND bmp2h -i ${COMPONENT_DIR}/logo.bmp -o logo.h
          DEPENDS ${COMPONENT_DIR}/logo.bmp
          VERBATIM)
 
@@ -790,7 +791,7 @@ it is added to the `ADDITIONAL_MAKE_CLEAN_FILES`_ property.
 
    If generating files as part of the project CMakeLists.txt file, not a component CMakeLists.txt, then use build property ``PROJECT_DIR`` instead of ``${COMPONENT_DIR}`` and ``${PROJECT_NAME}.elf`` instead of ``${COMPONENT_LIB}``.)
 
-If a a source file from another component included ``logo.h``, then ``add_dependencies`` would need to be called to add a dependency between
+If a source file from another component included ``logo.h``, then ``add_dependencies`` would need to be called to add a dependency between
 the two components, to ensure that the component source files were always compiled in the correct order.
 
 .. _cmake_embed_data:
