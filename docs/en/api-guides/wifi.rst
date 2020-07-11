@@ -320,7 +320,7 @@ If the Wi-Fi NVS flash is enabled by menuconfig, all Wi-Fi configuration in this
 ++++++++++++++++++++++++++++++++
  - s3.1: Call esp_wifi_start to start the Wi-Fi driver.
  - s3.2: The Wi-Fi driver posts <`WIFI_EVENT_STA_START`_> to the event task; then, the event task will do some common things and will call the application event callback function.
- - s3.3: The application event callback function relays the <`WIFI_EVENT_STA_START`_> to the application task. We recommend that you call esp_wifi_connect(). However, you can also call esp_wifi_connect() in other phrases after the <`WIFI_EVENT_STA_START`_> arises.
+ - s3.3: The application event callback function relays the <`WIFI_EVENT_STA_START`_> to the application task. We recommend that you call esp_wifi_connect(). However, you can also call esp_wifi_connect() in other phases after the <`WIFI_EVENT_STA_START`_> arises.
 
 4. Wi-Fi Connect Phase
 +++++++++++++++++++++++++++++++++
