@@ -42,7 +42,7 @@ the item to be stored. Allow-split buffers are more memory efficient than no-spl
 can return an item in two parts when retrieving.
 
 **Byte buffers** do not store data as separate items. All data is stored as a sequence of bytes,
-and any number of bytes and be sent or retrieved each time. Use byte buffers when separate items
+and any number of bytes can be sent or retrieved each time. Use byte buffers when separate items
 do not need to be maintained (e.g. a byte stream).
 
 .. note::
