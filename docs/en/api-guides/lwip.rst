@@ -80,7 +80,7 @@ Socket Error Handling
 BSD Socket error handling code is very important for robust socket applications. Normally the socket error handling involves the following aspects:
 
 - Detecting the error.
-- Geting the error reason code.
+- Getting the error reason code.
 - Handle the error according to the reason code.
 
 In lwIP, we have two different scenarios of handling socket errors:
